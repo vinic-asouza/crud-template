@@ -1,45 +1,44 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../store/modules/auth/actions';
 
-import { Container, Logo, Profile } from './styles';
+import { MdFitnessCenter } from 'react-icons/md';
+import Notification from '~/components/Notifications';
 
-import logo from '../../assets/logo.png';
+import logo from '~/assets/logo-small.svg';
+
+import { Container, Content, Profile } from './styles';
 
 export default function Header() {
-  const dispatch = useDispatch();
+  const profile = useSelector(state => state.user.profile);
 
-  const user = useSelector(state => state.auth.user);
-
-  function handleLogout() {
-    dispatch(logout());
-  }
   return (
-    <Container grid="12">
-      <nav>
-        <img src={logo} alt="Crud-App" />
-        <Logo>
-          <h1>CRUD</h1>
-          <h2>APP</h2>
-        </Logo>
+    <Container>
+      <Content>
+        <nav>
+          <MdFitnessCenter color="#1E90FF" size={40} />
+          <Link to="/pessoas">PESSOAS</Link>
+          <Link to="/register">USUÁRIOS</Link>
+        </nav>
 
-        <Link to="/clientes">Clientes</Link>
-      </nav>
+        <aside>
+          <Notification />
 
-      <aside>
-        <Profile>
-          <div>
-            <strong>{user.name}</strong>
-            <h5>{user.email}</h5>
-            <button type="button" onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
-        </Profile>
-      </aside>
+          <Profile>
+            <div>
+              <strong>{profile.name}</strong>
+              <Link to="/profile">Meu perfil</Link>
+            </div>
+            <img
+              src={
+                (profile.avatar && profile.avatar.url) ||
+                `https://api.adorable.io/avatars/250/abott@adorable.png`
+              }
+              alt="Diego Fernandes"
+            />
+          </Profile>
+        </aside>
+      </Content>
     </Container>
   );
 }

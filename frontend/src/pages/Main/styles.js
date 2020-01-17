@@ -20,7 +20,7 @@ export const Container = styled.div`
     clear: both;
   }
   padding-top: 10px;
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
 `;
 
 export const MainContent = styled.div`
@@ -75,7 +75,7 @@ export const Actions = styled.div`
 
   button {
     margin-right: 10px;
-    background: #FF6347;
+    background: #1E90FF;
     color: #fff;
   }
 
@@ -134,7 +134,7 @@ export const Aux = styled.div`
         margin: 0 5px 10px;
 
         border: 1px solid rgba(224, 224, 224, 1);
-        /* border-bottom: 1px solid #FF6347; */
+        /* border-bottom: 1px solid #1E90FF; */
 
         &::placeholder {
           color: rgba(0, 0, 0, 0.3);
@@ -152,7 +152,7 @@ export const Aux = styled.div`
         margin: 0 5px 10px;
 
         border: 1px solid rgba(224, 224, 224, 1);
-        /* border-bottom: 1px solid #FF6347; */
+        /* border-bottom: 1px solid #1E90FF; */
 
         &::placeholder {
           color: rgba(0, 0, 0, 0.3);
@@ -171,7 +171,7 @@ export const Aux = styled.div`
     button {
       margin: 5px 0 0;
       height: 44px;
-      background: #FF6347;
+      background: #1E90FF;
       font-weight: bold;
       color: #fff;
       border: 0;
@@ -180,7 +180,7 @@ export const Aux = styled.div`
       transition: background 0.2;
 
       &:hover {
-        background: ${darken(0.05, '#FF6347')};
+        background: ${darken(0.05, '#1E90FF')};
       }
     }
 

@@ -1,0 +1,148 @@
+/* eslint-disable camelcase */
+import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
+
+import api from '../../../services/api';
+
+import { createPessoaFailure, updatePessoaFailure } from './actions';
+
+export function* create({ payload }) {
+  try {
+    const {
+      pss_nome,
+      pss_sobrenome,
+      pss_tipo,
+      pss_nascimento,
+      pss_genero,
+      pss_email,
+      cid_id,
+      pss_logradouro,
+      pss_numero,
+      pss_complemento,
+      pss_fone1,
+      pss_fone2,
+      pss_fone3,
+      pss_bairro,
+      pss_cep,
+      pss_cpf,
+      pss_rg,
+      pss_cns,
+      pss_estado_civil,
+      cli_id,
+      tps_id,
+      ent_id,
+      con_id,
+    } = payload;
+
+    yield call(api.post, 'pessoas', {
+      pss_nome,
+      pss_sobrenome,
+      pss_tipo,
+      pss_nascimento,
+      pss_genero,
+      pss_email,
+      cid_id,
+      pss_logradouro,
+      pss_numero,
+      pss_complemento,
+      pss_fone1,
+      pss_fone2,
+      pss_fone3,
+      pss_bairro,
+      pss_cep,
+      pss_cpf,
+      pss_rg,
+      pss_cns,
+      pss_estado_civil,
+      cli_id,
+      tps_id,
+      ent_id,
+      con_id,
+    });
+    toast.success('Pessoa Adicionada');
+  } catch (err) {
+    toast.error('Falha no cadastro, verifique os dados');
+    yield put(createPessoaFailure());
+  }
+}
+
+export function* update({ payload }) {
+  try {
+    const {
+      id,
+      pss_nome,
+      pss_sobrenome,
+      pss_tipo,
+      pss_nascimento,
+      pss_genero,
+      pss_email,
+      cid_id,
+      pss_logradouro,
+      pss_numero,
+      pss_complemento,
+      pss_fone1,
+      pss_fone2,
+      pss_fone3,
+      pss_bairro,
+      pss_cep,
+      pss_cpf,
+      pss_rg,
+      pss_cns,
+      pss_estado_civil,
+      cli_id,
+      tps_id,
+      ent_id,
+      con_id,
+    } = payload;
+
+    yield call(api.put, `pessoas/${id}`, {
+      pss_nome,
+      pss_sobrenome,
+      pss_tipo,
+      pss_nascimento,
+      pss_genero,
+      pss_email,
+      cid_id,
+      pss_logradouro,
+      pss_numero,
+      pss_complemento,
+      pss_fone1,
+      pss_fone2,
+      pss_fone3,
+      pss_bairro,
+      pss_cep,
+      pss_cpf,
+      pss_rg,
+      pss_cns,
+      pss_estado_civil,
+      cli_id,
+      tps_id,
+      ent_id,
+      con_id,
+    });
+
+    // history.push('/clientes');
+    toast.success('Pessoa Atualizado');
+  } catch (err) {
+    toast.error('Falha na atualização, verifique os dados');
+    yield put(updatePessoaFailure());
+  }
+}
+
+export function* remove({ payload }) {
+  try {
+    const { id } = payload;
+
+    yield call(api.delete, `pessoas/${id}`);
+
+    toast.success('Pessoa removida com sucesso!');
+  } catch (err) {
+    toast.error('Erro ao remover pessoa, tente novamente.');
+  }
+}
+
+export default all([
+  takeLatest('@pessoa/CREATE_PESSOA_REQUEST', create),
+  takeLatest('@pessoa/UPDATE_PESSOA_REQUEST', update),
+  takeLatest('@pessoa/REMOVE_PESSOA_REQUEST', remove),
+]);
