@@ -11,10 +11,10 @@ import { Add, AspectRatio, Visibility, Edit, Delete } from '@material-ui/icons';
 import { MainContent, Actions } from '../../pages/Main/styles';
 import api from '../../services/api';
 
-import InfoPessoa from './info';
+// import InfoPessoa from './info';
 import CadastraPessoa from './store';
-import AtualizaPessoa from './update';
-import ExcluiPessoa from './delete';
+// import AtualizaPessoa from './update';
+// import ExcluiPessoa from './delete';
 
 export default function ListaPessoas() {
   const [pessoas, setPessoas] = useState([]);
@@ -33,25 +33,25 @@ export default function ListaPessoas() {
   function storePessoa() {
     setDetail('store');
   }
-  function infoPessoa(id) {
-    setPessoaId(id);
-    setDetail('info');
-  }
-  function updatePessoa(id) {
-    setPessoaId(id);
-    setDetail('update');
-  }
+  // function infoPessoa(id) {
+  //   setPessoaId(id);
+  //   setDetail('info');
+  // }
+  // function updatePessoa(id) {
+  //   setPessoaId(id);
+  //   setDetail('update');
+  // }
 
   function loadComponent() {
     switch (detail) {
       case 'info':
-        setAuxComponent(<InfoPessoa pssId={pssId} />);
+        // setAuxComponent(<InfoPessoa pssId={pssId} />);
         return '';
       case 'store':
         setAuxComponent(<CadastraPessoa />);
         return '';
       case 'update':
-        setAuxComponent(<AtualizaPessoa pssId={pssId} />);
+        // setAuxComponent(<AtualizaPessoa pssId={pssId} />);
         return '';
       default:
         setAuxComponent(<CadastraPessoa />);
@@ -83,28 +83,41 @@ export default function ListaPessoas() {
         <MaterialTable
           title="Registros:"
           columns={[
-            { title: 'Código', field: 'pss_id' },
-            { title: 'Nome', field: 'pss_nome' },
-            { title: 'Email', field: 'pss_email' },
-            { title: 'Telefone', field: 'pss_fone1' },
-            { title: 'Cliente', field: 'cli_fantasia' },
-            { title: 'Tipo', field: 'tps_descricao' },
-            { title: 'Ações', field: 'acoes' },
+            { title: 'Código', field: 'id' },
+            { title: 'Nome', field: 'name' },
+            // { title: 'Data de Nascimento', field: 'nascimento' },
+            // { title: 'Genero', field: 'genero' },
+            { title: 'Documento', field: 'documento' },
+            // { title: 'Rua', field: 'rua' },
+            // { title: 'Numero', field: 'numero' },
+            // { title: 'Bairro', field: 'bairro' },
+            // { title: 'Cidade', field: 'cidade' },
+            { title: 'Telefone', field: 'telefone' },
+            { title: 'Celular', field: 'celular' },
+            { title: 'Email', field: 'email' },
+            { title: 'Data do Cadastro', field: 'created_at' },
           ]}
           data={pessoas.map(pessoa => ({
-            pss_id: pessoa.pss_id,
-            pss_nome: pessoa.pss_nome.concat(' ', pessoa.pss_sobrenome),
-            pss_email: pessoa.pss_email,
-            pss_fone1: pessoa.pss_fone1,
-            cli_fantasia: pessoa.cliente.cli_fantasia,
-            tps_descricao: pessoa.pessoas_tipo.tps_descricao,
+            id: pessoa.id,
+            name: pessoa.name,
+            // nascimento: moment(pessoa.nascimento).calendar(),
+            // genero: pessoa.genero,
+            documento: pessoa.documento,
+            // rua: pessoa.rua,
+            // numero: pessoa.numero,
+            // bairro: pessoa.bairro,
+            // cidade: pessoa.cidade,
+            telefone: pessoa.telefone,
+            celular: pessoa.celular,
+            email: pessoa.email,
+            created_at: pessoa.created_at,
             acoes: (
               <div>
                 <button
                   type="button"
                   size="small"
                   aria-label="info"
-                  onClick={() => infoPessoa(pessoa.pss_id)}
+                  // onClick={() => infoPessoa(pessoa.pss_id)}
                 >
                   <Visibility size="small" />
                 </button>
@@ -112,12 +125,12 @@ export default function ListaPessoas() {
                   type="button"
                   size="small"
                   aria-label="update"
-                  onClick={() => updatePessoa(pessoa.pss_id)}
+                  // onClick={() => updatePessoa(pessoa.pss_id)}
                 >
                   <Edit size="small" />
                 </button>
 
-                <ExcluiPessoa pssId={pessoa.pss_id} />
+                {/* <ExcluiPessoa pssId={pessoa.pss_id} /> */}
               </div>
             ),
           }))}

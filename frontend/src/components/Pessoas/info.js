@@ -14,35 +14,15 @@ import api from '../../services/api';
 
 export default function InfoPessoa(pssId) {
   const [pessoa, setPessoa] = useState([]);
-  const [cliente, setCliente] = useState([]);
-  const [cidade, setCidade] = useState([]);
-  const [tipo, setTipo] = useState([]);
-  const [convenio, setConvenio] = useState([]);
-  const [entidade, setEntidade] = useState([]);
 
   useEffect(() => {
-    async function loadUser() {
+    async function loadPessoa() {
       const id = pssId.pssId;
       const response = await api.get(`pessoas/${id}`);
       setPessoa(response.data[0]);
-      setCliente(response.data[0].cliente);
-      setCidade(response.data[0].cidade);
-      setTipo(response.data[0].pessoas_tipo);
-      setConvenio(response.data[0].convenio);
-      setEntidade(response.data[0].entidade);
     }
-    loadUser();
+    loadPessoa();
   }, [pssId]);
-
-  function idade() {
-    const i = new Date().getFullYear() - pessoa.pss_nascimento;
-    console.log(pessoa.pss_nascimento);
-    return i;
-  }
-
-  // calcIdade(() => {
-  //   return new Date().getFullYear() - pessoa.pss_nascimento;
-  // });
 
   return (
     <SmallContent grid="4">

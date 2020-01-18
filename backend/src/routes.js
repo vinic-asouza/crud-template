@@ -4,6 +4,8 @@ import multer from 'multer';
 import multerConfig from './config/multer';
 
 import UserController from './app/controllers/UserController';
+import PessoaController from './app/controllers/PessoaController';
+
 import ProviderController from './app/controllers/ProviderController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
@@ -21,6 +23,9 @@ routes.post('/sessions', SessionController.store);
 routes.post('/users', UserController.store);
 
 routes.use(authMiddleware);
+
+routes.get('/pessoas', PessoaController.index);
+routes.post('/pessoas', PessoaController.store);
 
 routes.put('/users', UserController.update);
 routes.get('/providers', ProviderController.index);
