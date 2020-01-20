@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 
 import { signInRequest } from '~/store/modules/auth/actions';
 
-import logo from '~/assets/logo.svg';
+import { MdFitnessCenter } from 'react-icons/md';
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -25,7 +25,7 @@ export default function SignIn() {
 
   return (
     <>
-      <img src={logo} alt="GoBarber" />
+      <MdFitnessCenter color="#FFF" size={100} />
       <h1>CRUD Example</h1>
       <h3>React Application</h3>
 

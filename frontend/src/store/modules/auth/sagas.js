@@ -43,8 +43,8 @@ export function* signUp({ payload }) {
       password,
       provider: true,
     });
-
-    history.push('/pessoas');
+    toast.success('Usuário Cadastrado!');
+    // history.push('/pessoas');
   } catch (err) {
     toast.error('Falha no cadastro, verifique seus dados');
 

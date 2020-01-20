@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import { MdFitnessCenter } from 'react-icons/md';
 import Notification from '~/components/Notifications';
 
-import logo from '~/assets/logo-small.svg';
-
 import { Container, Content, Profile } from './styles';
 
 export default function Header() {
@@ -27,7 +25,7 @@ export default function Header() {
           <Profile>
             <div>
               <strong>{profile.name}</strong>
-              <Link to="/profile">Meu perfil</Link>
+              <Link to="/perfil">Meu perfil</Link>
             </div>
             <img
               src={

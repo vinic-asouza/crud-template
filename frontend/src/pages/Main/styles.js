@@ -24,6 +24,8 @@ export const Container = styled.div`
 `;
 
 export const MainContent = styled.div`
+  /* display: flex; */
+  justify-content: center;
   height: 100%;
   float: left;
   margin: 5px 5px 5px 5px;
@@ -128,7 +130,7 @@ export const Aux = styled.div`
         /* background: #fcfcfc; */
         /* border: 0; */
         border-radius: 3px;
-        width: 50%;
+        width: 100%;
         height: 30px;
         padding: 0 15px;
         margin: 0 5px 10px;

@@ -5,11 +5,10 @@ import mongoose from 'mongoose';
 import User from '../app/models/User';
 import Pessoa from '../app/models/Pessoa';
 import File from '../app/models/File';
-import Appointment from '../app/models/Appointment';
 
 import DatabaseConfig from '../config/database';
 
-const models = [User, Pessoa, File, Appointment];
+const models = [User, Pessoa, File];
 
 class Database {
     constructor() {
