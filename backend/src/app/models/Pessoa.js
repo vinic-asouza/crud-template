@@ -16,6 +16,8 @@ class Pessoa extends Model {
                 telefone: Sequelize.STRING,
                 celular: Sequelize.STRING,
                 email: Sequelize.STRING,
+                created_at: Sequelize.DATE,
+                updated_at: Sequelize.DATE
             },
             {
                 sequelize,

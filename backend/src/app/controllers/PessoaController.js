@@ -36,9 +36,9 @@ class PessoaController {
             return res.status(400).json({ error: 'Person already exists.' });
         }
 
-        const { id, name, nascimento, genero, documento, rua, numero, bairro, cidade, telefone, celular, email } = await Pessoa.create(req.body);
+        const { id, name, nascimento, genero, documento, rua, numero, bairro, cidade, telefone, celular, email, created_at, updated_at } = await Pessoa.create(req.body);
 
-        return res.json({ id, name, nascimento, genero, documento, rua, numero, bairro, cidade, telefone, celular, email });
+        return res.json({ id, name, nascimento, genero, documento, rua, numero, bairro, cidade, telefone, celular, email, created_at, updated_at });
     }
 
     async delete(req, res) {

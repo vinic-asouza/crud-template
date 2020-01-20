@@ -110,7 +110,7 @@ export default function ListaPessoas() {
             telefone: pessoa.telefone,
             celular: pessoa.celular,
             email: pessoa.email,
-            created_at: pessoa.created_at,
+            created_at: moment(pessoa.created_at).calendar(),
             acoes: (
               <div>
                 <button
