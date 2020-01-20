@@ -18,9 +18,8 @@ export default function InfoPessoa(pssId) {
   useEffect(() => {
     async function loadPessoa() {
       const id = pssId.pssId;
-      console.log(id)
       const response = await api.get(`pessoas/${id}`);
-      setPessoa(response.data[0]);
+      setPessoa(response.data);
     }
     loadPessoa();
   }, [pssId]);
@@ -68,7 +67,7 @@ export default function InfoPessoa(pssId) {
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row">
-                <strong>Data de Criação: </strong> {pessoa.created_at} <br />
+                <strong>Data de Criação: </strong> {moment(pessoa.created_at).calendar()} <br />
               </TableCell>
             </TableRow>
           </TableBody>
