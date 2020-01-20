@@ -23,6 +23,7 @@ routes.use(authMiddleware);
 routes.get('/pessoas', PessoaController.index);
 routes.get('/pessoas/:id', PessoaController.find);
 routes.post('/pessoas', PessoaController.store);
+routes.put('/pessoas/:id', PessoaController.update);
 
 routes.put('/users', UserController.update);
 

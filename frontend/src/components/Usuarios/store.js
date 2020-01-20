@@ -9,7 +9,7 @@ import { Edit } from '@material-ui/icons';
 import { Container, MainContent, Actions, Aux } from '../../pages/Main/styles';
 import { signUpRequest } from '../../store/modules/auth/actions';
 
-import { MdFitnessCenter } from 'react-icons/md';
+import { MdFitnessCenter, MdAccountCircle } from 'react-icons/md';
 
 export default function CadastraUsuario() {
 
@@ -27,7 +27,7 @@ export default function CadastraUsuario() {
           <h1>Cadastrar Usuário</h1>
         </Actions>
         <Aux>
-          <MdFitnessCenter color="#1E90FF" size={70} />
+          <MdAccountCircle color="#1E90FF" size={70} />
           <h1>CRUD Example</h1>
           <h3>React Application</h3>
           <br/>

@@ -50,45 +50,48 @@ class PessoaController {
         return res.json({ id, name, nascimento, genero, documento, rua, numero, bairro, cidade, telefone, celular, email, created_at, updated_at });
     }
 
+    async update(req, res) {
+        const schema = Yup.object().shape({
+            name: Yup.string(),
+            nascimento: Yup.string(),
+            documento: Yup.string().required(),
+            rua: Yup.string(),
+            numero: Yup.string(),
+            bairro: Yup.string(),
+            cidade: Yup.string(),
+        });
+
+        if (!(await schema.isValid(req.body))) {
+            return res.status(400).json({ error: 'Validation failed.' });
+        }
+
+        const { documento } = req.body;
+
+        const pessoa = await Pessoa.findOne({
+            where: { id: req.params.id}
+        })
+
+        if (documento !== pessoa.documento) {
+            const pessoaExists = await Pessoa.findOne({
+                where: { documento },
+            });
+
+            if (pessoaExists) {
+                return res.status(400).json({ error: 'Pessoa already exists.' });
+            }
+        }
+
+        await pessoa.update(req.body);
+
+        const { id, name, nascimento, genero, rua, numero, bairro, cidade, telefone, celular, email, created_at, updated_at } = await Pessoa.findOne({
+            where: { id: req.params.id }
+        })
+
+        return res.json({ id, name, nascimento, genero, documento, rua, numero, bairro, cidade, telefone, celular, email, created_at, updated_at });
+    }
+
     async delete(req, res) {
-        const appointment = await Appointment.findByPk(req.params.id, {
-            include: [
-                {
-                    model: User,
-                    as: 'provider',
-                    attributes: ['name', 'email'],
-                },
-                {
-                    model: User,
-                    as: 'user',
-                    attributes: ['name'],
-                },
-            ],
-        });
 
-        if (appointment.user_id !== req.userId) {
-            return res.status(401).json({
-                error: "You don't have permission to cancel this appointment",
-            });
-        }
-
-        const dateWithSub = subHours(appointment.date, 2);
-
-        if (isBefore(dateWithSub, new Date())) {
-            return res.status(401).json({
-                error: 'You can only cancel pessoas 2 hours in advance.',
-            });
-        }
-
-        appointment.canceled_at = new Date();
-
-        await appointment.save();
-
-        await Queue.add(CancellationMail.key, {
-            appointment,
-        });
-
-        return res.json(appointment);
     }
 }
 

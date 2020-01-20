@@ -45,6 +45,7 @@ export function createPessoaFailure() {
 }
 
 export function updatePessoaRequest(
+  id,
   name,
   nascimento,
   genero,
@@ -60,6 +61,7 @@ export function updatePessoaRequest(
   return {
     type: '@pessoa/UPDATE_PESSOA_REQUEST',
     payload: {
+      id,
       name,
       nascimento,
       genero,

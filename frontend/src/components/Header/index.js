@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { MdFitnessCenter } from 'react-icons/md';
+import { MdFitnessCenter, MdAccountCircle } from 'react-icons/md';
 import Notification from '~/components/Notifications';
 
 import { Container, Content, Profile } from './styles';
@@ -14,7 +14,7 @@ export default function Header() {
     <Container>
       <Content>
         <nav>
-          <MdFitnessCenter color="#1E90FF" size={40} />
+          <MdAccountCircle color="#1E90FF" size={40} />
           <Link to="/pessoas">PESSOAS</Link>
           <Link to="/register">USUÁRIOS</Link>
         </nav>
