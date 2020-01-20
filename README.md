@@ -1,5 +1,11 @@
 # Basic CRUD Template
 
+Aplicação desenvolvida em Javascript utilizando Node + React.
+
+O intuido é oferecer um template básico com configurações predefinidas para servir como base em novos projetos. 
+
+Conta com autenticação, cadastro e gerenciamento de usúarios, e funções CRUD (Cadastro, Visualização, Atualização, e Exclusão) para uma tabela no banco de dados.
+
 # BACKEND
 
 API desenvolvida em NodeJS.
