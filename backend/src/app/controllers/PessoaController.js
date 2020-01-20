@@ -6,6 +6,15 @@ import pt from 'date-fns/locale/pt';
 import Pessoa from '../models/Pessoa';
 
 class PessoaController {
+    async find(req, res) {
+
+        const pessoas = await Pessoa.findOne({
+            where: { id: req.params.id },
+        });
+
+        return res.json(pessoas);
+    }
+
     async index(req, res) {
 
         const pessoas = await Pessoa.findAll();

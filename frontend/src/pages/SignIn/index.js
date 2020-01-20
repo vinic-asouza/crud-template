@@ -34,7 +34,6 @@ export default function SignIn() {
         <Input name="password" type="password" placeholder="Senha" />
 
         <button type="submit">{loading ? 'Carregando...' : 'Acessar'}</button>
-        <Link to="/register">Registrar-se</Link>
       </Form>
     </>
   );

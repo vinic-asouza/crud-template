@@ -18,6 +18,7 @@ export default function InfoPessoa(pssId) {
   useEffect(() => {
     async function loadPessoa() {
       const id = pssId.pssId;
+      console.log(id)
       const response = await api.get(`pessoas/${id}`);
       setPessoa(response.data[0]);
     }
@@ -36,57 +37,40 @@ export default function InfoPessoa(pssId) {
           <TableBody>
             <TableRow>
               <TableCell component="th" scope="row">
-                <strong>Código: </strong> {pessoa.pss_id}
+                <strong>Código: </strong> {pessoa.id}
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row">
-                <strong>Nome: </strong> {pessoa.pss_nome} {pessoa.pss_sobrenome}
-                <br />
-                <strong>Gênero: </strong> {pessoa.pss_genero} <br />
-                <strong>Idade: </strong> {idade()} <br />
+                <strong>Nome: </strong> {pessoa.name} <br />
+                <strong>Gênero: </strong> {pessoa.genero} <br />
+                <strong>Idade: </strong> 18 <br />
                 <strong>Data de Nascimento: </strong>{' '}
-                {moment(pessoa.pss_nascimento).calendar()}
+                {moment(pessoa.nascimento).calendar()}
                 <br />
-                <strong>Tipo: </strong> {pessoa.pss_tipo} <br />
-                <strong>Estado Civil: </strong> {pessoa.pss_estado_civil} <br />
-                <strong>RG: </strong> {pessoa.pss_rg} <br />
-                <strong>CPF: </strong> {pessoa.pss_cpf} <br />
-                <strong>CNS: </strong> {pessoa.pss_cns} <br />
+                <strong>Documento: </strong> {pessoa.documento} <br />
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row">
-                <strong>Endereço: </strong> {pessoa.pss_logradouro} <br />
-                <strong>Número: </strong> {pessoa.pss_numero} <br />
-                <strong>Complemento: </strong> {pessoa.pss_complemento} <br />
-                <strong>Bairro: </strong> {pessoa.pss_bairro} <br />
-                <strong>CEP: </strong> {pessoa.pss_cep} <br />
-                <strong>Cidade: </strong> {cidade.cid_nome}
+                <strong>Endereço: </strong> {pessoa.rua} <br />
+                <strong>Número: </strong> {pessoa.numero} <br />
+                <strong>Bairro: </strong> {pessoa.bairro} <br />
+                <strong>Cidade: </strong> {pessoa.cidade}
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row">
-                <strong>Email: </strong> {pessoa.pss_email} <br />
-                <strong>Telefone Principal: </strong> {pessoa.pss_fone1} <br />
-                <strong>Contato Adicional: </strong> {pessoa.pss_fone2} <br />
-                <strong>Contato Adicional: </strong> {pessoa.pss_fone3} <br />
+                <strong>Email: </strong> {pessoa.email} <br />
+                <strong>Telefone Residencial: </strong> {pessoa.telefone} <br />
+                <strong>Celular: </strong> {pessoa.celular} <br />
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row">
-                <strong>Tipo Pessoa: </strong> {tipo.tps_descricao} <br />
-                <strong>Cliente: </strong> {cliente.cli_fantasia} <br />
-                <strong>Convenio: </strong> {convenio.con_fantasia} <br />
-                <strong>Entidade: </strong> {entidade.ent_fantasia} <br />
+                <strong>Data de Criação: </strong> {pessoa.created_at} <br />
               </TableCell>
             </TableRow>
-            {/* <TableRow>
-              <TableCell component="th" scope="row">
-                <strong>Data de Criação: </strong> {pessoa.createdAt} <br />
-                <strong>Ultima Modificação: </strong> {pessoa.updatedAt}
-              </TableCell>
-            </TableRow> */}
           </TableBody>
         </Table>
       </Aux>

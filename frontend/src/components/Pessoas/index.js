@@ -11,10 +11,10 @@ import { Add, AspectRatio, Visibility, Edit, Delete } from '@material-ui/icons';
 import { MainContent, Actions } from '../../pages/Main/styles';
 import api from '../../services/api';
 
-// import InfoPessoa from './info';
+import InfoPessoa from './info';
 import CadastraPessoa from './store';
-// import AtualizaPessoa from './update';
-// import ExcluiPessoa from './delete';
+import AtualizaPessoa from './update';
+import ExcluiPessoa from './delete';
 
 export default function ListaPessoas() {
   const [pessoas, setPessoas] = useState([]);
@@ -33,25 +33,25 @@ export default function ListaPessoas() {
   function storePessoa() {
     setDetail('store');
   }
-  // function infoPessoa(id) {
-  //   setPessoaId(id);
-  //   setDetail('info');
-  // }
-  // function updatePessoa(id) {
-  //   setPessoaId(id);
-  //   setDetail('update');
-  // }
+  function infoPessoa(id) {
+    setPessoaId(id);
+    setDetail('info');
+  }
+  function updatePessoa(id) {
+    setPessoaId(id);
+    setDetail('update');
+  }
 
   function loadComponent() {
     switch (detail) {
       case 'info':
-        // setAuxComponent(<InfoPessoa pssId={pssId} />);
+        setAuxComponent(<InfoPessoa pssId={pssId} />);
         return '';
       case 'store':
         setAuxComponent(<CadastraPessoa />);
         return '';
       case 'update':
-        // setAuxComponent(<AtualizaPessoa pssId={pssId} />);
+        setAuxComponent(<AtualizaPessoa pssId={pssId} />);
         return '';
       default:
         setAuxComponent(<CadastraPessoa />);
@@ -96,6 +96,7 @@ export default function ListaPessoas() {
             { title: 'Celular', field: 'celular' },
             { title: 'Email', field: 'email' },
             { title: 'Data do Cadastro', field: 'created_at' },
+            { title: '', field: 'acoes' },
           ]}
           data={pessoas.map(pessoa => ({
             id: pessoa.id,
@@ -117,7 +118,7 @@ export default function ListaPessoas() {
                   type="button"
                   size="small"
                   aria-label="info"
-                  // onClick={() => infoPessoa(pessoa.pss_id)}
+                  onClick={() => infoPessoa(pessoa.id)}
                 >
                   <Visibility size="small" />
                 </button>
@@ -125,12 +126,12 @@ export default function ListaPessoas() {
                   type="button"
                   size="small"
                   aria-label="update"
-                  // onClick={() => updatePessoa(pessoa.pss_id)}
+                  onClick={() => updatePessoa(pessoa.id)}
                 >
                   <Edit size="small" />
                 </button>
 
-                {/* <ExcluiPessoa pssId={pessoa.pss_id} /> */}
+                <ExcluiPessoa pssId={pessoa.id} />
               </div>
             ),
           }))}

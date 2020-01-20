@@ -7,9 +7,8 @@ import { signOut } from '~/store/modules/auth/actions';
 
 import AvatarInput from './AvatarInput';
 
-// import { Container } from './styles';
-
-import { Container, MainContent, Aux } from '../../pages/Main/styles';
+import { Edit } from '@material-ui/icons';
+import { Container, MainContent, Aux, Actions } from '../../pages/Main/styles';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -26,6 +25,10 @@ export default function Profile() {
   return (
     <Container>
       <MainContent grid="4">
+        <Actions>
+          <Edit />
+          <h1>Atualizar Perfil</h1>
+        </Actions>
         <Aux>
           <Form initialData={profile} onSubmit={handleSubmit}>
             <AvatarInput name="avatar_id" />
