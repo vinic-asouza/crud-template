@@ -8,7 +8,7 @@ import 'moment/locale/pt-br';
 import MaterialTable from 'material-table';
 import Fab from '@material-ui/core/Fab';
 import { Add, AspectRatio, Visibility, Edit, Delete } from '@material-ui/icons';
-import { MainContent, Actions } from '../../pages/Main/styles';
+import { MainContent, Actions } from '../../pages/_layouts/default/styles';
 import api from '../../services/api';
 
 import InfoPessoa from './info';

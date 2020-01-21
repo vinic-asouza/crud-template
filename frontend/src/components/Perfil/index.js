@@ -8,7 +8,7 @@ import { signOut } from '~/store/modules/auth/actions';
 import AvatarInput from './AvatarInput';
 
 import { Edit } from '@material-ui/icons';
-import { Container, MainContent, Aux, Actions } from '../../pages/Main/styles';
+import { Container, MainContent, Aux, Actions } from '../../pages/_layouts/default/styles';
 
 export default function Profile() {
   const dispatch = useDispatch();
